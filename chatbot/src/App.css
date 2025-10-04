@@ -1,85 +1,168 @@
+/* App Container */
 .app {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: #37393d;
-  font-family: "Poppins", sans-serif;
+  background: url('./assets/sea.png') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Poppins', sans-serif;
+  color: #333;
 }
 
+/* Chat Container - The main UI element */
 .chat-container {
-  width: 400px;
-  height: 600px;
-  background: rgb(27, 26, 26);
+width: 90%;
+  max-width: 800px;
+  /* Increased max-width for a wider layout */
+  height: 90vh;
+  /* This makes the chat box fill 90% of the viewport height */
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 20px;
-  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  animation: slideUp 0.6s ease-out;
 }
 
-/* Header */
+/* Header - Subtle and elegant orange-peach */
 .chat-header {
-  background: #0078ff;
-  color: white;
+  background: linear-gradient(135deg, #FFD5B0, #FFAB70);
+  color: #5C3D21;
+  /* A deep brown for readability */
   text-align: center;
-  padding: 15px;
-  font-size: 18px;
-  font-weight: 500;
+  padding: 25px;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3);
 }
 
-/* Chat window area */
+/* Safety notice */
+.safety-notice {
+
+  color: #5C3D21;
+  font-size: 11px;
+  text-align: center;
+  
+  line-height: 1.4;
+}
+
+/* Chat window area - The dynamic scrolling container */
 .chat-window {
   flex: 1;
   padding: 15px;
   overflow-y: auto;
+  /* This makes the chat area scrollable when content exceeds the container's height */
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
-/* Message bubbles */
+/* Message bubbles - Softer and more elegant */
 .message-bubble {
-  padding: 10px 14px;
-  border-radius: 18px;
+  padding: 14px 22px;
+  border-radius: 22px;
   max-width: 75%;
-  line-height: 1.4;
+  line-height: 1.5;
+  font-size: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  animation: fadeIn 0.4s ease-out;
 }
 
 .message-bubble.user {
-  background: #0078ff;
-  color: white;
+  /* Soft, warm, and semi-transparent orange */
+  background: rgba(255, 179, 102, 0.8);
+  color: #fff;
   align-self: flex-end;
 }
 
 .message-bubble.bot {
-  background: #e5e5ea;
-  color: black;
+  /* A subtle, light gray that provides a gentle contrast */
+  background: rgba(235, 240, 245, 0.7);
+  color: #555;
   align-self: flex-start;
 }
 
-/* Input bar */
+/* Input bar - More integrated and sleek */
 .input-bar {
   display: flex;
-  border-top: 1px solid #ddd;
+  padding: 10px 15px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
 }
 
 .input-bar input {
   flex: 1;
-  border: none;
-  padding: 14px;
+  background: #FFFFFF;
+  border: 1px solid #DDDDDD;
+  border-radius: 25px;
+  padding: 10px 15px;
   outline: none;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+
+.input-bar input:focus {
+  border-color: #FFA000;
+  box-shadow: 0 0 0 3px rgba(255, 160, 0, 0.2);
 }
 
 .input-bar button {
-  background: #0078ff;
+  /* A more muted, sophisticated orange */
+  background: #E68A00;
   color: white;
   border: none;
-  padding: 0 20px;
+  padding: 0 26px;
   cursor: pointer;
-  border-top-right-radius: 10px;
+  border-radius: 25px;
+  margin-left: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s, transform 0.2s;
 }
 
 .input-bar button:hover {
-  background: #0064d2;
+  background: #CC7B00;
+  transform: translateY(-2px);
+}
+
+/* Keyframe animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Media query for mobile */
+@media (max-width: 600px) {
+  .chat-container {
+    width: 100%;
+    height: 100vh;
+    border-radius: 0;
+    max-height: none;
+  }
 }
