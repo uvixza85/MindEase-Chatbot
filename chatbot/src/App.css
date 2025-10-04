@@ -1,42 +1,85 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+.app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #37393d;
+  font-family: "Poppins", sans-serif;
+}
+
+.chat-container {
+  width: 400px;
+  height: 600px;
+  background: rgb(27, 26, 26);
+  border-radius: 20px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Header */
+.chat-header {
+  background: #0078ff;
+  color: white;
   text-align: center;
+  padding: 15px;
+  font-size: 18px;
+  font-weight: 500;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Chat window area */
+.chat-window {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Message bubbles */
+.message-bubble {
+  padding: 10px 14px;
+  border-radius: 18px;
+  max-width: 75%;
+  line-height: 1.4;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.message-bubble.user {
+  background: #0078ff;
+  color: white;
+  align-self: flex-end;
 }
 
-.card {
-  padding: 2em;
+.message-bubble.bot {
+  background: #e5e5ea;
+  color: black;
+  align-self: flex-start;
 }
 
-.read-the-docs {
-  color: #888;
+/* Input bar */
+.input-bar {
+  display: flex;
+  border-top: 1px solid #ddd;
+}
+
+.input-bar input {
+  flex: 1;
+  border: none;
+  padding: 14px;
+  outline: none;
+}
+
+.input-bar button {
+  background: #0078ff;
+  color: white;
+  border: none;
+  padding: 0 20px;
+  cursor: pointer;
+  border-top-right-radius: 10px;
+}
+
+.input-bar button:hover {
+  background: #0064d2;
 }

@@ -1,35 +1,62 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+
+
+function App() {
+  const [message, setMessage] = useState([{ text: "I'm here for you. Want to talk about what’s making you feel that way?", sender: "bot" }])
+  const[inputmes , setInputmes] =useState("")
+
+  function handleClick() {
+    const newMessage = {
+    text:inputmes ,
+    sender: "user" 
+  };
+   setMessage([...message, newMessage]);
+   setInputmes("")
+  }
+
+  const handleChange = (event) => {
+    setInputmes(event.target.value);
+  };
+  
+
+  return(
+     <div className="app">
+      <div className="chat-container">
+
+        {/* Header */}
+        <div className="chat-header">
+          <h2>MindEase Chatbot</h2>
+        </div>
+
+        {/* Chat Window */}
+        <div className="chat-window">
+        {message.map((msg, index) => (
+        <div key={index} className={`message-bubble ${msg.sender}`}>
+          <p>{msg.text}</p>
+        </div>
+        ))}
+        </div>
+
+        {/* Input Bar */}
+        <div className="input-bar">
+          <input type="text" placeholder="Type your message..."value={inputmes}
+        onChange={handleChange}
+        onKeyDown={(e) => {
+        if (e.key === "Enter") {
+         handleClick();  
+        }
+        }}
+        />
+        
+          <button onClick={handleClick}>Send</button>
+        </div>
+
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
 export default App
