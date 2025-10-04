@@ -77,7 +77,7 @@ width: 90%;
 .message-bubble.user {
   /* Soft, warm, and semi-transparent orange */
   background: rgba(255, 179, 102, 0.8);
-  color: #fff;
+  color: #555;;
   align-self: flex-end;
 }
 
